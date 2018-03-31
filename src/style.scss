@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.stage {
+  background-color: lightskyblue;
+  width: 600px;
+  height: 600px; //- border: 20px solid #c00;
+  position: relative;
+}
+
+.head,
+.food {
+  position: absolute;
+  background-color: yellow;
+  width: 20px;
+  height: 20px;
+  border: 2px solid blue;
+}
+
+.food {
+  background-color: green;
+  border: 2px solid white;
+}
+
+.score-wrapper {
+  position: absolute;
+  top: 0;
+  right: -150px;
+  font-size: 2rem;
+}
+
+.score {
+  font-weight: bold;
+  color: red;
+}
