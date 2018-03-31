@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        title Promopty prompt
+    body
+        h1.message
+    script.
+        const messageElement = document.querySelector('.message')
+        const gender = () => prompt('Are you male or female?')
+        const setMessage = message => messageElement.innerText = message
+        switch(gender()) {
+            case 'male':
+                setMessage(`What's up bro?`)
+                break;
+            case 'female':
+                setMessage(`Sorry boss, you're right`)
+                break;
+            default:
+                setMessage(`Wow, what a wonderful day!`)
+        }
