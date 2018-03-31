@@ -7,22 +7,64 @@
 .stage {
   background-color: lightskyblue;
   width: 600px;
-  height: 600px; //- border: 20px solid #c00;
+  height: 600px; //- border: 0px solid #c00;
   position: relative;
 }
 
-.head,
-.food {
+%head-food {
   position: absolute;
-  background-color: yellow;
-  width: 20px;
-  height: 20px;
-  border: 2px solid blue;
+  width: 0px;
+  height: 0px;
+  border: 20px solid yellow;
+  border-right: 20px solid transparent;
+  border-radius: 50%;
+}
+
+.head {
+  @extend %head-food;
+  transition: 0.1s;
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    // width: 8px;
+    // height: 8px;
+    border-radius: 50%;
+    border: 20px solid transparent;
+    top: -20px;
+    left: -20px;
+  }
+  &:before {
+    border-top: 20px solid yellow;
+    animation: topJaw 0.25s alternate infinite;
+  }
+  &:after {
+    border-bottom: 20px solid yellow;
+    animation: bottomJaw 0.25s alternate infinite;
+  }
+}
+
+@keyframes bottomJaw {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(-45deg);
+  }
+}
+
+@keyframes topJaw {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(45deg);
+  }
 }
 
 .food {
-  background-color: green;
-  border: 2px solid white;
+  @extend %head-food;
+  border: 20px solid green;
 }
 
 .score-wrapper {

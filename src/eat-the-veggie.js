@@ -1,4 +1,4 @@
-const speed = 200;
+const speed = 100;
 // x and y axis
 let 
     xaHead = 0,
@@ -6,7 +6,7 @@ let
     xaFood = 0,
     yaFood = 0,
     score = 0,
-    max = 30,
+    max = 15,
     foodLifeTime = 10000,
     foodLifeTimeRemaining = 10000,
     direction = 'left';
@@ -20,8 +20,8 @@ let
 const moveFood = () => {
   xaFood = ~~(Math.random() * max)
   yaFood = ~~(Math.random() * max)
-  food.style.left = `${xaFood * 20}px`;
-  food.style.top = `${yaFood * 20}px`;
+  food.style.left = `${xaFood * 40}px`;
+  food.style.top = `${yaFood * 40}px`;
   score++;
   setScore(score);
 }
@@ -36,22 +36,26 @@ setScore(score);
 const moveHead = () => {
   switch(direction) {
     case 'left':
-      xaHead = xaHead > 0 ? --xaHead : max - 1;
+      xaHead = xaHead > 0 ? --xaHead : 0;
+      head.style.transform = 'rotate(180deg)'
       break;
-    case 'right':
-      xaHead = xaHead < max - 1 ? ++xaHead : 0;
+      case 'right':
+      xaHead = xaHead < max - 1 ? ++xaHead : max - 1;
+      head.style.transform = 'rotate(0deg)'
       break;
-    case 'up':
-      yaHead = yaHead > 0 ? --yaHead : max - 1;
+      case 'up':
+      yaHead = yaHead > 0 ? --yaHead : 0;
+      head.style.transform = 'rotate(270deg)'
       break;
-    case 'down':
-      yaHead = yaHead < max - 1 ? ++yaHead : 0;
+      case 'down':
+      yaHead = yaHead < max - 1 ? ++yaHead : max - 1;
+      head.style.transform = 'rotate(90deg)'
       break;
     default:
       console.log(`No direction`)
   }
-  head.style.left = `${xaHead * 20}px`;
-  head.style.top = `${yaHead * 20}px`;
+  head.style.left = `${xaHead * 40}px`;
+  head.style.top = `${yaHead * 40}px`;
 
   foodLifeTimeRemaining -= speed;
   food.style.opacity = foodLifeTimeRemaining / foodLifeTime + 0.2;
