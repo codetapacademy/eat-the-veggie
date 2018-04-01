@@ -48,8 +48,6 @@ const moveFood = () => {
   }
   food.style.left = `${xaFood * 40}px`;
   food.style.top = `${yaFood * 40}px`;
-  score++;
-  setScore(score);
 }
 
 const setScore = score => {
@@ -116,6 +114,8 @@ const moveHead = () => {
   if (xaFood === xaHead && yaFood === yaHead) {
     console.log(`Yammy`);
     moveFood();
+    score++;
+    setScore(score);
   }
 }
 document.body.addEventListener('keydown', e => {
