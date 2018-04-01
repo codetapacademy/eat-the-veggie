@@ -6,8 +6,8 @@
 
 .stage {
   background-color: lightskyblue;
-  width: 600px;
-  height: 600px; //- border: 0px solid #c00;
+  width: 800px;
+  height: 800px; //- border: 0px solid #c00;
   position: relative;
 }
 
@@ -68,7 +68,7 @@
 }
 .rock {
   @extend %head-food;
-  border: 20px solid brown;
+  border: 19px solid brown;
   border-radius: 10%;
 }
 

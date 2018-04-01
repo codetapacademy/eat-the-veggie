@@ -1,21 +1,26 @@
-const speed = 200;
+const speed = 100;
 // x and y axis
 let map = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
 ];
 let 
     xaHead = 0,
@@ -23,7 +28,7 @@ let
     xaFood = 0,
     yaFood = 0,
     score = 0,
-    max = 15,
+    max = 20,
     foodLifeTime = 10000,
     foodLifeTimeRemaining = 10000,
     direction = 'left';
@@ -37,6 +42,10 @@ let
 const moveFood = () => {
   xaFood = ~~(Math.random() * max)
   yaFood = ~~(Math.random() * max)
+  if (map[yaFood][xaFood]) {
+    moveFood();
+    return;
+  }
   food.style.left = `${xaFood * 40}px`;
   food.style.top = `${yaFood * 40}px`;
   score++;
@@ -78,13 +87,13 @@ const moveHead = () => {
       }
       break;
     case 'up':
-      if (!map[yaHead-1][xaHead]) {
+      if (yaHead > 0 && !map[yaHead-1][xaHead]) {
         yaHead = yaHead > 0 ? --yaHead : 0;
         head.style.transform = 'rotate(270deg)'
       }
       break;
     case 'down':
-      if (!map[yaHead+1][xaHead]) {
+      if (yaHead < max - 1 && !map[yaHead+1][xaHead]) {
         yaHead = yaHead < max - 1 ? ++yaHead : max - 1;
         head.style.transform = 'rotate(90deg)'
       }
@@ -112,16 +121,20 @@ const moveHead = () => {
 document.body.addEventListener('keydown', e => {
   switch(e.keyCode) {
     case 37:
-      if (direction !== 'right') direction = 'left';
+      // if (direction !== 'right') direction = 'left';
+      direction = 'left';
       break;
     case 38:
-      if (direction !== 'down') direction = 'up';
+      // if (direction !== 'down') direction = 'up';
+      direction = 'up';
       break;
     case 39:
-      if (direction !== 'left') direction = 'right';
+      // if (direction !== 'left') direction = 'right';
+      direction = 'right';
       break;
     case 40:
-      if (direction !== 'up') direction = 'down';
+      // if (direction !== 'up') direction = 'down';
+      direction = 'down';
       break;
     default:
       console.log(`It's not an arrow key`)
