@@ -66,11 +66,16 @@
   @extend %head-food;
   border: 20px solid green;
 }
+.rock {
+  @extend %head-food;
+  border: 20px solid brown;
+  border-radius: 10%;
+}
 
 .score-wrapper {
   position: absolute;
-  top: 0;
-  right: -150px;
+  bottom: -50px;
+  left: 0;
   font-size: 2rem;
 }
 

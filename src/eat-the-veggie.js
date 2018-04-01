@@ -1,5 +1,22 @@
-const speed = 100;
+const speed = 200;
 // x and y axis
+let map = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 
+];
 let 
     xaHead = 0,
     yaHead = 0,
@@ -31,29 +48,51 @@ const setScore = score => {
   foodLifeTimeRemaining = foodLifeTime;
 }
 
+rockList = map.map((rocka, y) => {
+  rocka.map((rock, x) => {
+    if (rock) {
+      console.log(x, y)
+      let rockElement = document.createElement('div');
+      rockElement.className = 'rock';
+      rockElement.style.left = `${x * 40}px`;
+      rockElement.style.top = `${y * 40}px`;
+      stage.appendChild(rockElement);
+    }
+  })
+})
+
 setScore(score);
 
 const moveHead = () => {
   switch(direction) {
     case 'left':
-      xaHead = xaHead > 0 ? --xaHead : 0;
-      head.style.transform = 'rotate(180deg)'
+      if (!map[yaHead][xaHead-1]) {
+        xaHead = xaHead > 0 ? --xaHead : 0;
+        head.style.transform = 'rotate(180deg)';
+      }
       break;
-      case 'right':
-      xaHead = xaHead < max - 1 ? ++xaHead : max - 1;
-      head.style.transform = 'rotate(0deg)'
+    case 'right':
+      if (!map[yaHead][xaHead+1]) {
+        xaHead = xaHead < max - 1 ? ++xaHead : max - 1;
+        head.style.transform = 'rotate(0deg)'
+      }
       break;
-      case 'up':
-      yaHead = yaHead > 0 ? --yaHead : 0;
-      head.style.transform = 'rotate(270deg)'
+    case 'up':
+      if (!map[yaHead-1][xaHead]) {
+        yaHead = yaHead > 0 ? --yaHead : 0;
+        head.style.transform = 'rotate(270deg)'
+      }
       break;
-      case 'down':
-      yaHead = yaHead < max - 1 ? ++yaHead : max - 1;
-      head.style.transform = 'rotate(90deg)'
+    case 'down':
+      if (!map[yaHead+1][xaHead]) {
+        yaHead = yaHead < max - 1 ? ++yaHead : max - 1;
+        head.style.transform = 'rotate(90deg)'
+      }
       break;
     default:
       console.log(`No direction`)
   }
+  // console.log(map[yaHead][xaHead])
   head.style.left = `${xaHead * 40}px`;
   head.style.top = `${yaHead * 40}px`;
 
