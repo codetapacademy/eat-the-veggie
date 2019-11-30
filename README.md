@@ -1,6 +1,6 @@
 # Eat the Veggie
 
-This is a simple gate that I got to build on my flight from London, the UK, to Constanta, Romania.
+This is a simple gate that I got to build on my flight from London, the UK, to Majorca, Spain.
 My son told me: "Daddy, I'm bored". So this is what I came up with.
 
 Enjoy and have fun!
